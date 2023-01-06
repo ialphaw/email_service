@@ -9,6 +9,8 @@ def sendgrid_mail_request(
     body: str,
     subject: str = "",
 ):
+    """This function will send a mail request to Sendgrid service"""
+
     settings = AppSettings()
     message = Mail(
         from_email=settings.sendgrid_from_mail,

@@ -4,6 +4,8 @@ import requests
 
 
 def mailgun_mail_request(to_email, body, subject):
+    """This function will send a mail request to Mailgun service"""
+
     return requests.post(
         "https://api.mailgun.net/v3/sandbox695eb9f7e9ec4b4394a9e9225d256176.mailgun.org/messages",
         auth=("api", AppSettings().mailgun_api_key.get_secret_value()),

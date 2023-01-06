@@ -19,5 +19,7 @@ def send_email(send_email_body: SendMail):
 
 @router.get("/{task_id}/get_status")
 def get_status(task_id):
+    """This endpoint will get the datils of the related task"""
+
     result = get_task_info(task_id)
     return JSONResponse(result)
