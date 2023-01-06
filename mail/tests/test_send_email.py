@@ -9,7 +9,7 @@ from main import app
 client = TestClient(app)
 
 
-@patch("core.tasks.mail_request")
+@patch("mail.tasks.mail_request.delay")
 def test_send_email(client):
     response = client.post(
         "/api/mail/send_email",

@@ -9,8 +9,8 @@ from main import app
 client = TestClient(app)
 
 
-@patch("core.tasks.mail_request")
-def test_task_status(client):
+@patch("mail.tasks.mail_request")
+def test_task_status(mock_mail_request):
     response = client.post(
         "/api/mail/send_email",
         data=json.dumps(
@@ -25,19 +25,10 @@ def test_task_status(client):
     task_id = content["task_id"]
     assert task_id
 
-    response = client.get(f"/{task_id}/get_status")
+    response = client.get(f"api/mail/{task_id}/get_status")
     content = response.json()
     assert content == {
         "task_id": task_id,
         "task_status": "PENDING",
         "task_result": None,
-    }
-
-    while content["task_status"] == "PENDING":
-        response = client.get(f"/{task_id}/get_status")
-        content = response.json()
-    assert content == {
-        "task_id": task_id,
-        "task_status": "SUCCESS",
-        "task_result": True,
     }

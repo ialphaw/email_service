@@ -22,6 +22,9 @@ class AppSettings(BaseAppSettings):
     min_connection_count: int = 10
 
     sendgrid_api_key: SecretStr
+    mailgun_api_key: SecretStr
+
+    sendgrid_from_mail: str
 
     allowed_hosts: List[str] = ["*"]
 

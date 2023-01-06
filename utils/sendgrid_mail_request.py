@@ -23,4 +23,4 @@ def sendgrid_mail_request(
         print(response.body)
         print(response.headers)
     except Exception as e:
-        print(e)
+        raise Exception(e)

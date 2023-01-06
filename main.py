@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from core.config import get_app_settings
 from core.routes import router as api_router
+from utils import create_celery
 
 
 def get_application() -> FastAPI:
@@ -11,6 +12,8 @@ def get_application() -> FastAPI:
     settings.configure_logging()
 
     application = FastAPI(**settings.fastapi_kwargs)
+
+    application.celery_app = create_celery()
 
     application.add_middleware(
         CORSMiddleware,
@@ -26,3 +29,4 @@ def get_application() -> FastAPI:
 
 
 app = get_application()
+celery = app.celery_app
