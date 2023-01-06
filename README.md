@@ -21,7 +21,7 @@ First, you should generate a .env file based on .env.sample you can find in the 
 next, [Celery](https://docs.celeryq.dev/) is needed for this app. Just run the below command.
 
 ```bash
-celery -A core.celery worker -E -l info --logfile=celery.log -B --detach
+celery -A main.celery worker -E -l info --logfile=celery.log -B --detach
 ```
 
 This app use [Uvicorn](https://www.uvicorn.org/) for its ASGI server. you can start the app with the below command.
