@@ -29,3 +29,9 @@ This app use [Uvicorn](https://www.uvicorn.org/) for its ASGI server. you can st
 ```bash
 uvicorn main:app --reload
 ```
+
+Or instead of above steps, just run below command:
+
+```bash
+docker-compose up -d --build
+```
